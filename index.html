@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup de Atenção</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button id="show-popup">Mostrar Pop-up</button>
+
+    <!-- POPUP -->
+    <div id="popup-overlay">
+      <div id="popup">
+        <div class="popup-left">
+          <img src="./alerta.jpg" alt="Atenção" class="popup-icon" />
+        </div>
+        <div class="popup-right">
+          <h2>Atenção!</h2>
+          <p>
+            O seu navegador vai <strong>solicitar permissão</strong> para baixar
+            o material selecionado. Atente-se para liberar acesso e garantir
+            todo o conteúdo desejado.
+          </p>
+          <div class="popup-buttons">
+            <button id="edit-info" class="btn-outline">
+              Voltar
+            </button>
+<button id="confirm-download" class="btn-primary">
+  <img src="./download-icon.svg" alt="Download" class="btn-icon" />
+  Confirmar e baixar
+</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- ...seu html ... -->
+
+  <!-- Script inline de teste (JS puro) -->
+  <script>
+    function showPopup() {
+      const overlay = document.getElementById("popup-overlay");
+      if (overlay) overlay.style.display = "flex";
+    }
+
+    function closePopup() {
+      const overlay = document.getElementById("popup-overlay");
+      if (overlay) overlay.style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const showButton = document.getElementById("show-popup");
+      const confirmButton = document.getElementById("confirm-download");
+      const editButton = document.getElementById("edit-info");
+
+      showButton?.addEventListener("click", showPopup);
+
+      confirmButton?.addEventListener("click", () => {
+        alert("Download iniciado!");
+        closePopup();
+      });
+
+      editButton?.addEventListener("click", () => {
+        alert("Redirecionando para editar informações...");
+        closePopup();
+      });
+    });
+  </script>
+</body>
+</html>
+
+  </body>
+</html>

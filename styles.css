@@ -1,0 +1,246 @@
+/* ========== FONTES ========== */
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+/* ========== RESET GLOBAL ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Satoshi", "Inter", "Segoe UI", Arial, sans-serif;
+  background-color: #f5f6fa;
+  padding: 40px;
+  color: #1f1f1f;
+}
+
+/* ========== OVERLAY DO POPUP ========== */
+#popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
+#popup {
+  display: flex;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  max-width: 720px;
+  overflow: hidden;
+  animation: popupIn 0.3s ease;
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== LADO ESQUERDO (IMAGEM) ========== */
+.popup-left {
+  background-color: #e9eefc;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+.popup-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border: none;
+  margin: 0;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.popup-left img:hover {
+  transform: scale(1.03);
+}
+
+/* ========== LADO DIREITO (TEXTO E BOTÕES) ========== */
+.popup-right {
+  flex: 1;
+  padding: 50px 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Título "Atenção!" */
+.popup-right h2 {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 42px;
+  color: #111;
+  margin-bottom: 8px; /* espaço ajustado */
+}
+
+/* Texto de apoio */
+.popup-right p {
+  font-family: "Satoshi", sans-serif;
+  font-size: 24px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 36px;
+  font-weight: 400; /* Regular */
+}
+
+.popup-right strong {
+  font-weight: 700; /* Bold */
+  color: #111; /* preto */
+}
+
+/* ========== BOTÕES ========== */
+.popup-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  flex-wrap: nowrap; /* 🔒 mantém lado a lado */
+  overflow-x: auto;
+}
+
+.btn-outline,
+.btn-primary {
+  font-family: "Satoshi", sans-serif;
+  font-size: 18px;
+  font-weight: 700; /* Bold */
+  border-radius: 8px;
+  padding: 12px 26px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex; /* mantém ícone e texto alinhados */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap; /* 🔒 evita quebra de linha no texto */
+  line-height: 1;
+  word-break: keep-all;
+}
+
+/* Ícone dentro do botão */
+.btn-primary .btn-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: inline-block;
+  flex: 0 0 auto;
+  filter: brightness(0) invert(1); /* ícone branco */
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover .btn-icon {
+  transform: translateY(-2px);
+}
+
+/* Botão outline */
+.btn-outline {
+  background-color: transparent;
+  color: #2563eb;
+  border: 1.6px solid #2563eb;
+}
+
+.btn-outline:hover {
+  background-color: #ebf2ff;
+}
+
+/* Botão primário */
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #1e4fc7;
+}
+
+/* ========== BOTÃO DE TESTE (Mostrar Popup) ========== */
+#show-popup {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#show-popup:hover {
+  background-color: #1e4fc7;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 700px) {
+  #popup {
+    flex-direction: column;
+    max-width: 90%;
+  }
+
+  .popup-left {
+    width: 100%;
+    height: 180px;
+  }
+
+  .popup-left img {
+    object-fit: contain;
+  }
+
+  .popup-right {
+    padding: 30px;
+  }
+
+  .popup-right h2 {
+    font-size: 32px;
+  }
+
+  .popup-right p {
+    font-size: 20px;
+  }
+
+  .popup-buttons {
+    justify-content: center;
+    gap: 10px;
+  }
+}
